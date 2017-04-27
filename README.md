@@ -14,11 +14,14 @@ Debe de estar instalado el siguiente software
 Una versión superior de MongoDB está contemplada, pero será necesario cambiar ```lib/db/start_mongo.bat``` si se quiere que funcione el script de arranque de la base de datos.
 
 ### Instalación
-En una ventana de comandos donde el entorno ha sido configurado para usar node.js, utiliza el siguiente comando en la **raíz del proyecto**
+En la **raíz del proyecto** y en una ventana de comandos donde el entorno ha sido configurado para usar node.js, ejecutar el siguiente comando:
+```
+npm install
+```
+Después, se puede iniciar el proyecto y dejarlo listo para ser usado con:
 ```
 npm run fresh_start_db
 ```
-La base de datos será arrancada e inicializada y el proyecto comenzará a aceptar peticiones a la API.
 
 ### Despliegue
 Existen comandos **adicionales** para iniciar el proyecto según unas circunstancias distintas
