@@ -1,0 +1,30 @@
+{
+  "name": "node.js-handson",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "init_db": "call lib/db/start_mongo.bat",
+    "reset_db": "node lib/db/install_db.js",
+    "start_db": "npm run init_db && npm run start",
+    "fresh_start_db": "npm run init_db && npm run reset_db && npm run start",
+    "jshint": "jshint . --exclude node_modules/"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cluster": "^0.7.7",
+    "cookie-parser": "~1.4.3",
+    "crypto": "0.0.3",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "express": "~4.15.2",
+    "i18n-nodejs": "^2.0.0",
+    "jsonwebtoken": "^7.4.0",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.4",
+    "mongoose": "^4.9.6"
+  }
+}

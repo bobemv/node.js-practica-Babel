@@ -1,0 +1,18 @@
+{
+    "USER_NOT_FOUND": {
+        "es": "Usuario no existe.",
+        "en": "User not found."
+    },
+    "NO_PARAMS": {
+        "es": "Parámetros incompletos.",
+        "en": "Not enough parameters."
+    },
+    "": {
+        "es": "",
+        "en": ""
+    },
+    "": {
+        "es": "",
+        "en": ""
+    }
+}
