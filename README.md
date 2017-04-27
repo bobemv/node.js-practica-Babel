@@ -84,7 +84,7 @@ Parámetros:
 Respuesta: JSON(success, token) o error.
 
 ### Idioma
-Delante de todas las url de la API, se puede añadir ```en``` o ```es````para indicar si queremos el idioma de la aplicación en inglés o español respectivamente (no cambia el contenido, pero sí como se informa al usuario)
+Delante de todas las url de la API, se puede añadir ```en``` o ```es``` para indicar si queremos el idioma de la aplicación en inglés o español respectivamente (no cambia el contenido, pero sí como se informa al usuario)
 ```
 GET http://host:3000/es/anuncios
 ```
