@@ -42,6 +42,10 @@ GET http://host:3000/anuncios
 ```
 GET http://host:3000/anuncios?tag=lifestyle&venta=false
 ```
+En la dirección ```anuncios/tags``` se pueden obtener los distintos tags en uso por los anuncios.
+```
+GET http://host:3000/anuncios/tags
+```
 Para poder obtener respuesta, es necesario el uso de un **token** que será dado al usuario una vez se haya registrado y autenticado.
 ```
 GET http://host:3000/anuncios?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoiNThmZjM23jAyNzE1YjBxZDU0ZWExMDdjIiwiaWF0IjoxNDkzMTowOTAwLCJleHAiOjE0OTMyOTM3MDB9.Wa4CARJl7J4LRjnXUHkQ9JGwHxw-I2YaxY_mxCAZFj0
@@ -79,6 +83,15 @@ Parámetros:
 
 Respuesta: JSON(success, token) o error.
 
+### Idioma
+Delante de todas las url de la API, se puede añadir ```en``` o ```es````para indicar si queremos el idioma de la aplicación en inglés o español respectivamente (no cambia el contenido, pero sí como se informa al usuario)
+```
+GET http://host:3000/es/anuncios
+```
+```
+POST http://host:3000/en/usuarios/registro
+```
+Por defecto estará en español.
 
 ## Herramientas
 * [node.js](https://nodejs.org/es/) - Entorno de Javascript para el desarrollo del servidor.

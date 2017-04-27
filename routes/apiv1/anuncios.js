@@ -63,6 +63,18 @@ router.get('/', function(req, res, next) {
 	
 });
 
+router.get('/tags', function(req, res, next) {
+    Anuncio.find().distinct('tags', function(err, tags) {
+        if (err) {
+            next(err);
+            return;
+        }
+        res.json({ success: true, result: tags });
+    });
+
+
+});
+
 
 
 module.exports = router;

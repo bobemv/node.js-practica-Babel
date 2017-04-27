@@ -28,3 +28,7 @@ node_modules
 
 #Ignore database already created
 data/db/
+
+#Ignore images
+*.jpg
+*.png

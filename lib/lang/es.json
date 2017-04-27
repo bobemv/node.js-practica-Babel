@@ -1,0 +1,7 @@
+{
+	"USER_NOT_FOUND": "Usuario no existe.",
+	"NO_PARAMS": "Parámetros incompletos.",
+	"EMAIL_NOT_REGISTERED": "Email no registrado.",
+	"INTERNAL_ERROR": "Error en el servidor.",
+	"PSW_INCORRECT": "Contraseña incorrecta."
+}

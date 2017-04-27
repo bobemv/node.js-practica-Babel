@@ -9,28 +9,27 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config');
 const CustomError = require('./../../lib/error/customerror');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
 
 router.post('/registro', function(req, res, next){
 //
 	const nuevousuario = req.body;
-
+//console.log(nuevousuario);
 	/*if(!nuevousuario.nombre || !nuevousuario.email || !nuevousuario.clave){
 		
 		next(new CustomError('NO_PARAMS', 'es'));
 		return;
 	}*/
-
+//console.log(req.params.i18n);
 	nuevousuario.clave = crypto.createHash('sha256').update(nuevousuario.clave).digest('hex');
 
 		const doc = new Usuario(nuevousuario);
 
 		doc.save(function(err, nuevousuario){
 			if(err){
-				next(new Error('Nombre o email ya en uso'));
+                //console.log(req.i18n);
+                //console.log(req.i18n.__('USER_NOT_FOUND'))
+				next(new CustomError('USER_NOT_FOUND', req.i18n));
 				return;
 			}
 
@@ -45,22 +44,26 @@ router.post('/authenticate', function(req, res, next){
 	//recibimos credenciales
     const email = req.body.email;
     const clave = req.body.clave;
+    if(!email || !clave){
+        next(new CustomError('NO_PARAMS', req.i18n));
+        return;
+    }
     // buscamos el usuario en la base de datos
     Usuario.findOne({ email: email }).exec((err, usuario) => {
         if (err) {
-            next(new Error('Email no registrado'));
+            next(new CustomError('INTERNAL_ERROR', req.i18n));
             return;
         }
 
         if (!usuario) {
-            res.json({ success: false, error: 'Email no válido' });
+            next(new CustomError('EMAIL_NOT_REGISTERED', req.i18n));
             return;
         }
 
         // comprobamos su clave
 
         if (crypto.createHash('sha256').update(clave).digest('hex') !== usuario.clave) {
-            res.json({ success: false, error: 'Contraseña incorrecta' });
+            next(new CustomError('PSW_INCORRECT', req.i18n));
             return;
         }
         // creamos un token JWT

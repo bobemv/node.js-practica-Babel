@@ -14,9 +14,17 @@ require('./models/Usuario.js');
 
 const anuncios = require('./routes/apiv1/anuncios.js');
 const usuarios = require('./routes/apiv1/usuarios.js');
+const i18n = require('i18n');
+
+i18n.configure({
+    locales:['es', 'en'],
+    directory: __dirname+'/lib/lang/'
+});
+
 
 var app = express();
 
+app.use(i18n.init);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -29,10 +37,27 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', index);
-//app.use('/users', users);
-app.use('/anuncios', anuncios);
-app.use('/usuarios', usuarios);
+
+app.use('/:lang', function(req, res, next){
+	const lang = req.params.lang;
+	switch(lang){
+        case 'es':
+        	i18n.setLocale('es');
+        break;
+        case 'en':
+       		i18n.setLocale('en');
+        break;
+        default:
+        	i18n.setLocale('es');
+        break;
+    }
+    req.i18n = i18n;
+    //console.log(req.params);
+    next();
+});
+
+app.use('/:lang?/anuncios', anuncios);
+app.use('/:lang?/usuarios', usuarios);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
